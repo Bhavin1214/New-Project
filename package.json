@@ -1,0 +1,35 @@
+{
+  "name": "bhavin-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cookie-parse": "^0.4.0",
+    "cors": "^2.8.5",
+    "cryptlib": "^1.0.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "localizify": "^2.0.0",
+    "mongoose": "^8.18.1",
+    "nodemailer": "^7.0.6",
+    "nodemon": "^3.1.10",
+    "swagger-ui-express": "^5.0.1",
+    "twilio": "^5.9.0",
+    "ua-parser-js": "^2.0.5",
+    "Validator": "^1.1.4"
+  }
+}
