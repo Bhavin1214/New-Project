@@ -32,7 +32,7 @@ const authModule = {
                     return sendApiResponse(
                         req, res,
                         statusCode.BAD_REQUEST,
-                        { keyword: "VALIDATION_ERROR", components: [] }
+                        { keyword: "PASSWORD_REQUIRED", components: [] }
                     );
                 }
             } else if (signupType === "G" || signupType === "F") {
@@ -40,7 +40,7 @@ const authModule = {
                     return sendApiResponse(
                         req, res,
                         statusCode.BAD_REQUEST,
-                        { keyword: "VALIDATION_ERROR", components: [] }
+                        { keyword: "SOCIALID_REQUIRED", components: [] }
                     );
                 }
             } else {
@@ -556,9 +556,9 @@ const authModule = {
         await user.save()
 
         return sendApiResponse(
-            req,res,
+            req, res,
             statusCode.OK,
-            {keyword:"PASS_RESET_SUCCESS",components:{}}
+            { keyword: "PASS_RESET_SUCCESS", components: {} }
         )
     },
 

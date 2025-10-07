@@ -1,24 +1,31 @@
 const english = {
-
-
     INTERNAL_SERVER_ERROR: "Something went wrong.%{error}",
     VALIDATION_ERROR: "Some required fields are missing or invalid.",
+    TOKEN_INVALID: "Token is missing or invalid. Please log in again.",
     EMAIL_ALREADY_EXIST: "Email already exists.",
     PHONE_ALREADY_EXIST: "Phone number already exists.",
     USER_CREATED: "User registered successfully.",
     SOCIALID_REQUIRED: "Social ID is required for social signup.",
     PASSWORD_REQUIRED: "Password is required for normal signup.",
-
     MISSING_EMAIL_OR_PHONE: "Email or phone number is required.",
     INVALID_CREDENTIALS: "Invalid login credentials.",
     MISSING_SOCIAL_ID: "Social ID is required for social login.",
     USER_NOT_FOUND: "User not found.",
     LOGIN_SUCCESS: "Login successful.",
     UPDATE_SUCCESS: "Profile updated successfully.",
-    TOKEN_INVALID: "Token is missing or invalid. Please log in again.",
-
-    
-
+    EMAIL_NOT_FOUND: "Email not found.",
+    OTP_SENT_EMAIL: "OTP has been sent to your email.",
+    EMAIL_ALREADY_VERIFYED: "Email is already verified.",
+    INVALID_OTP: "Invalid OTP.",
+    OTP_EXPIRED: "OTP has expired.",
+    OTP_VERIFIED: "OTP verified successfully.",
+    OTP_SEND_NUMBER: "OTP has been sent to your phone number.",
+    PHONE_ALREADY_VERIFYED: "Phone number is already verified.",
+    LOGOUT_SUCCESS: "Logout successful.",
+    SENT_EMAIL: "Password reset email has been sent.",
+    INVALID_RESETPASS_TOKEN: "Invalid reset password token.",
+    RESETPASS_TOKEN_EXPIRED: "Reset password token has expired.",
+    PASS_RESET_SUCCESS: "Password has been reset successfully."
 };
 
 export default english;

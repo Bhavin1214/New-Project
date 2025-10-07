@@ -1,20 +1,31 @@
 const gujarati = {
-    INTERNAL_SERVER_ERROR: "કંઈક ખોટું થયું છે.",
-    VALIDATION_ERROR: "કેટલાંક જરૂરી ફિલ્ડ્સ ગેરમાર્ગી અથવા ખાલી છે.",
-    EMAIL_ALREADY_EXIST: "ઈમેલ પહેલાથી જ અસ્તિત્વમાં છે.",
-    PHONE_ALREADY_EXIST: "ફોન નંબર પહેલાથી જ અસ્તિત્વમાં છે.",
+    INTERNAL_SERVER_ERROR: "કંઇક ખોટું થયું.%{error}",
+    VALIDATION_ERROR: "કેટલાક જરૂરી ફીલ્ડ્સ ગુમ છે અથવા અમાન્ય છે.",
+    TOKEN_INVALID: "ટોકન ગુમ છે અથવા અમાન્ય છે. કૃપા કરીને ફરીથી લૉગિન કરો.",
+    EMAIL_ALREADY_EXIST: "ઈમેલ પહેલેથી જ અસ્તિત્વમાં છે.",
+    PHONE_ALREADY_EXIST: "ફોન નંબર પહેલેથી જ અસ્તિત્વમાં છે.",
     USER_CREATED: "યુઝર સફળતાપૂર્વક રજીસ્ટર થયો.",
-    SOCIALID_REQUIRED: "સોશિયલ સાઇનઅપ માટે Social ID જરૂરી છે.",
-    PASSWORD_REQUIRED: "સામાન્ય સાઇનઅપ માટે પાસવર્ડ જરૂરી છે.",
-
+    SOCIALID_REQUIRED: "સોશિયલ સાઇનઅપ માટે સોશિયલ ID જરૂરી છે.",
+    PASSWORD_REQUIRED: "સાધારણ સાઇનઅપ માટે પાસવર્ડ જરૂરી છે.",
     MISSING_EMAIL_OR_PHONE: "ઈમેલ અથવા ફોન નંબર જરૂરી છે.",
-    INVALID_CREDENTIALS: "અમાન્ય લોગિન વિગતો.",
-    MISSING_SOCIAL_ID: "સોશિયલ લોગિન માટે Social ID જરૂરી છે.",
-    USER_NOT_FOUND: "યુઝર મળ્યો નથી.",
-    LOGIN_SUCCESS: "લોગિન સફળ.",
-    UPDATE_SUCCESS: "પ્રોફાઇલ સફળતાપૂર્વક અપડેટ થઈ ગઈ છે.",
-    TOKEN_INVALID: "ટોકન ગુમ છે અથવા અમાન્ય છે. કૃપા કરીને ફરીથી લોગિન કરો.",
-
-};
+    INVALID_CREDENTIALS: "લૉગિન ક્રેડેન્શિયલ અમાન્ય છે.",
+    MISSING_SOCIAL_ID: "સોશિયલ લૉગિન માટે સોશિયલ ID જરૂરી છે.",
+    USER_NOT_FOUND: "યુઝર મળ્યો નહીં.",
+    LOGIN_SUCCESS: "લૉગિન સફળ.",
+    UPDATE_SUCCESS: "પ્રોફાઇલ સફળતાપૂર્વક અપડેટ થઈ.",
+    EMAIL_NOT_FOUND: "ઈમેલ મળી નથી.",
+    OTP_SENT_EMAIL: "તમારા ઈમેલ પર OTP મોકલવામાં આવ્યો છે.",
+    EMAIL_ALREADY_VERIFYED: "ઈમેલ પહેલેથી જ વેરીફાઇડ છે.",
+    INVALID_OTP: "અમાન્ય OTP.",
+    OTP_EXPIRED: "OTPની સમયમર્યાદા પૂર્ણ થઈ ગઈ છે.",
+    OTP_VERIFIED: "OTP સફળતાપૂર્વક વેરીફાઇડ થઈ ગયું.",
+    OTP_SEND_NUMBER: "તમારા ફોન નંબર પર OTP મોકલવામાં આવ્યો છે.",
+    PHONE_ALREADY_VERIFYED: "ફોન નંબર પહેલેથી જ વેરીફાઇડ છે.",
+    LOGOUT_SUCCESS: "સફળતાપૂર્વક લૉગઆઉટ થયો.",
+    SENT_EMAIL: "પાસવર્ડ રીસેટ ઈમેલ મોકલવામાં આવ્યો છે.",
+    INVALID_RESETPASS_TOKEN: "અમાન્ય રીસેટ પાસવર્ડ ટોકન.",
+    RESETPASS_TOKEN_EXPIRED: "રીસેટ પાસવર્ડ ટોકનની સમયમર્યાદા પૂર્ણ થઈ ગઈ છે.",
+    PASS_RESET_SUCCESS: "પાસવર્ડ સફળતાપૂર્વક રીસેટ થયો."
+}
 
 export default gujarati;

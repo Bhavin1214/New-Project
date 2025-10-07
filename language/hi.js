@@ -1,19 +1,31 @@
 const hindi = {
-    INTERNAL_SERVER_ERROR: "कुछ गलत हो गया।",
-    VALIDATION_ERROR: "कुछ ज़रूरी फ़ील्ड्स गायब हैं या गलत हैं।",
+    INTERNAL_SERVER_ERROR: "कुछ गलत हो गया।%{error}",
+    VALIDATION_ERROR: "कुछ आवश्यक फ़ील्ड गायब या अवैध हैं।",
+    TOKEN_INVALID: "टोकन गायब या अमान्य है। कृपया फिर से लॉगिन करें।",
     EMAIL_ALREADY_EXIST: "ईमेल पहले से मौजूद है।",
     PHONE_ALREADY_EXIST: "फ़ोन नंबर पहले से मौजूद है।",
     USER_CREATED: "उपयोगकर्ता सफलतापूर्वक पंजीकृत हुआ।",
-    SOCIALID_REQUIRED: "सामाजिक साइनअप के लिए Social ID आवश्यक है।",
+    SOCIALID_REQUIRED: "सोशल साइनअप के लिए सोशल ID आवश्यक है।",
     PASSWORD_REQUIRED: "सामान्य साइनअप के लिए पासवर्ड आवश्यक है।",
-
     MISSING_EMAIL_OR_PHONE: "ईमेल या फ़ोन नंबर आवश्यक है।",
-    INVALID_CREDENTIALS: "अमान्य लॉगिन क्रेडेंशियल।",
-    MISSING_SOCIAL_ID: "सोशल लॉगिन के लिए Social ID आवश्यक है।",
-    USER_NOT_FOUND: "यूज़र नहीं मिला।",
-    LOGIN_SUCCESS: "लॉगिन सफल।",
-    UPDATE_SUCCESS: "प्रोफ़ाइल सफलतापूर्वक अपडेट हो गई।",
-    TOKEN_INVALID: "टोकन गायब है या अमान्य है। कृपया दोबारा लॉगिन करें।",
-};
+    INVALID_CREDENTIALS: "लॉगिन क्रेडेंशियल अमान्य हैं।",
+    MISSING_SOCIAL_ID: "सोशल लॉगिन के लिए सोशल ID आवश्यक है।",
+    USER_NOT_FOUND: "उपयोगकर्ता नहीं मिला।",
+    LOGIN_SUCCESS: "लॉगिन सफल हुआ।",
+    UPDATE_SUCCESS: "प्रोफ़ाइल सफलतापूर्वक अपडेट हुई।",
+    EMAIL_NOT_FOUND: "ईमेल नहीं मिला।",
+    OTP_SENT_EMAIL: "आपके ईमेल पर OTP भेजा गया है।",
+    EMAIL_ALREADY_VERIFYED: "ईमेल पहले से सत्यापित है।",
+    INVALID_OTP: "अमान्य OTP।",
+    OTP_EXPIRED: "OTP की अवधि समाप्त हो गई है।",
+    OTP_VERIFIED: "OTP सफलतापूर्वक सत्यापित हुआ।",
+    OTP_SEND_NUMBER: "आपके फ़ोन नंबर पर OTP भेजा गया है।",
+    PHONE_ALREADY_VERIFYED: "फ़ोन नंबर पहले से सत्यापित है।",
+    LOGOUT_SUCCESS: "सफलतापूर्वक लॉगआउट हुआ।",
+    SENT_EMAIL: "पासवर्ड रीसेट ईमेल भेज दिया गया है।",
+    INVALID_RESETPASS_TOKEN: "अमान्य पासवर्ड रीसेट टोकन।",
+    RESETPASS_TOKEN_EXPIRED: "पासवर्ड रीसेट टोकन की अवधि समाप्त हो गई है।",
+    PASS_RESET_SUCCESS: "पासवर्ड सफलतापूर्वक रीसेट हुआ।"
+}
 
 export default hindi;
