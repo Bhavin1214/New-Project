@@ -13,5 +13,6 @@ router.post("/varifyPhone",authController.varifyPhone)
 router.get("/logout",authController.logout)
 router.post("/forgotPassword",authController.forgotPassword)
 router.post("/resetPassword",authController.resetPassword)
+router.post("/changePassword",authController.changePassword)
 
 export default router;  

@@ -162,3 +162,21 @@ export const resetPasswordValidation = Joi.object({
             "string.min": "Password must be at least 6 characters"
         })
 })
+
+export const changePasswordValidation = Joi.object({
+    oldPassword: Joi.string()
+        .min(6)
+        .required()
+        .messages({
+            "string.empty": "oldPassword is required",
+            "string.min": "oldPassword must be at least 6 characters"
+        }),
+
+    newPassword: Joi.string()
+        .min(6)
+        .required()
+        .messages({
+            "string.empty": "newPassword is required",
+            "string.min": "newPassword must be at least 6 characters"
+        })
+})

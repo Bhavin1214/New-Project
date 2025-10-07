@@ -145,7 +145,7 @@ export const validateHeaderToken = async (req) => {
         if (!token) return null;
 
         const decoded = jwt.verify(token, GLOBLES.JWT_SECRET);
-
+        
         if (!isValidObjectId(decoded.id)) return null;
 
         const user = await userModel.findById(decoded.id)

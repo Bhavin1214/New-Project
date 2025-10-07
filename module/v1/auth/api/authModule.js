@@ -517,52 +517,116 @@ const authModule = {
     },
 
     resetPassword: async (req, res) => {
-        const authHeader = req.headers["authorization"];
-        if (!authHeader || !authHeader.startsWith("Bearer ")) return null;
-        const token = authHeader.split(" ")[1];
+        try {
+            const authHeader = req.headers["authorization"];
+            if (!authHeader || !authHeader.startsWith("Bearer ")) return null;
+            const token = authHeader.split(" ")[1];
 
-        const { newPassword } = req.body;
+            const { newPassword } = req.body;
 
-        const userId = req.user.id;
-        const user = await UserModel.findById(userId).select("+auth.password +auth.passwordResetToken")
+            const userId = req.user.id;
+            const user = await UserModel.findById(userId).select("+auth.password +auth.passwordResetToken")
 
-        if (!user) {
+            if (!user) {
+                return sendApiResponse(
+                    req, res,
+                    statusCode.NOT_FOUND,
+                    { keyword: "USER_NOT_FOUND", components: {} }
+                )
+            }
+
+            if (token !== user.auth.passwordResetToken) {
+                return sendApiResponse(
+                    req, res,
+                    statusCode.NOT_FOUND,
+                    { keyword: "INVALID_RESETPASS_TOKEN", components: {} }
+                )
+            }
+
+            if (user.auth.passwordResetExpires < new Date()) {
+                return sendApiResponse(
+                    req, res,
+                    statusCode.NOT_FOUND,
+                    { keyword: "RESETPASS_TOKEN_EXPIRED", components: {} }
+                )
+            }
+
+            user.auth.password = newPassword;
+            user.auth.passwordResetExpires = null
+            user.auth.passwordResetToken = null
+            await user.save()
+
             return sendApiResponse(
                 req, res,
-                statusCode.NOT_FOUND,
-                { keyword: "USER_NOT_FOUND", components: {} }
+                statusCode.OK,
+                { keyword: "PASS_RESET_SUCCESS", components: {} }
             )
-        }
-
-        if (token !== user.auth.passwordResetToken) {
+        } catch (error) {
+            console.log(error);
             return sendApiResponse(
                 req, res,
-                statusCode.NOT_FOUND,
-                { keyword: "INVALID_RESETPASS_TOKEN", components: {} }
+                statusCode.INTERNAL_SERVER_ERROR,
+                { keyword: "INTERNAL_SERVER_ERROR", components: [] }
             )
         }
-
-        if (user.auth.passwordResetExpires < new Date()) {
-            return sendApiResponse(
-                req, res,
-                statusCode.NOT_FOUND,
-                { keyword: "RESETPASS_TOKEN_EXPIRED", components: {} }
-            )
-        }
-
-        user.auth.password = newPassword;
-        user.auth.passwordResetExpires = null
-        user.auth.passwordResetToken = null
-        await user.save()
-
-        return sendApiResponse(
-            req, res,
-            statusCode.OK,
-            { keyword: "PASS_RESET_SUCCESS", components: {} }
-        )
     },
 
+    changePassword: async (req, res) => {
+        try {
+            
+            const userId = req.user.id;
+            
+            const user = await UserModel.findById(userId).select("+auth.password")
+            const {oldPassword,newPassword} = req.body;
+            if (!user) {
+                return sendApiResponse(
+                    req, res,
+                    statusCode.NOT_FOUND,
+                    { keyword: "USER_NOT_FOUND", components: {} }
+                )
+            }
+            if (user.signupType !== "N") {
+                return sendApiResponse(
+                    req, res,
+                    statusCode.UNAUTHORIZED,
+                    { keyword: "SOCIAL_LOGIN_USER", components: {} }
+                )
+            }
 
+            if (!user.flags.isProfileComplete) {
+                return sendApiResponse(
+                    req, res,
+                    statusCode.UNAUTHORIZED,
+                    { keyword: "PROFILE_NOT_COMPLETE", components: {} }
+                )
+            }
+            const isMatch = await user.comparePassword(oldPassword);
+            if (!isMatch) {
+                return sendApiResponse(
+                    req, res,
+                    statusCode.UNAUTHORIZED,
+                    { keyword: "WRONG_PASSWORD", components: {} }
+                )
+            }
+
+            user.auth.password = newPassword;
+            await user.save();
+
+            return sendApiResponse(
+                req,res,
+                statusCode.OK,
+                {keyword:"PASSWORD_CHANGED",components:{}}
+            )
+
+        } catch (error) {
+            console.log(error);
+            return sendApiResponse(
+                req, res,
+                statusCode.INTERNAL_SERVER_ERROR,
+                { keyword: "INTERNAL_SERVER_ERROR", components: {error} }
+            )
+        }
+    }
 }
 
 export default authModule;

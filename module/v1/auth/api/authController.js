@@ -1,5 +1,6 @@
 import authModule from "./authModule.js";
 import {
+    changePasswordValidation,
     forgotPasswordValidation,
     loginValidation,
     otpValidation,
@@ -17,7 +18,7 @@ import {
 import statusCode from "../../../../config/statusCode.js";
 
 const authController = {
-    
+
     signup: (req, res) => {
         try {
             extractHeaderLanguage(req, (req) => {
@@ -278,7 +279,7 @@ const authController = {
 
     resetPassword: (req, res) => {
         try {
-            extractHeaderLanguage(req,async(req)=>{
+            extractHeaderLanguage(req, async (req) => {
                 req.user = await validateHeaderToken(req)
 
                 if (!req.user) {
@@ -288,7 +289,7 @@ const authController = {
                         { keyword: "TOKEN_INVALID", components: [] }
                     )
                 }
-                decryption(req,(req)=>{
+                decryption(req, (req) => {
                     const validate = checkValidationRules(req.body, resetPasswordValidation);
                     if (validate.valid) {
                         authModule.resetPassword(req, res)
@@ -308,6 +309,44 @@ const authController = {
                 req, res,
                 statusCode.INTERNAL_SERVER_ERROR,
                 { keyword: "INTERNAL_SERVER_ERROR", components: [] }
+            )
+        }
+    },
+
+    changePassword: (req, res) => {
+        try {
+            extractHeaderLanguage(req, async (req) => {
+                req.user = await validateHeaderToken(req);
+                if (!req.user) {
+                    return sendApiResponse(
+                        req, res,
+                        statusCode.UNAUTHORIZED,
+                        { keyword: "TOKEN_INVALID", components: [] }
+                    )
+                }
+
+                decryption(req, (req) => {
+                    const validate = checkValidationRules(req.body, changePasswordValidation);
+
+                    if (validate.valid) {
+                        authModule.changePassword(req, res)
+                    } else {
+                        return sendApiResponse(
+                            req, res,
+                            statusCode.BAD_REQUEST,
+                            { keyword: "VALIDATION_ERROR", components: [] },
+                            validate.message
+                        )
+                    }
+                })
+            })
+
+        } catch (error) {
+            console.log(error);
+            return sendApiResponse(
+                req, res,
+                statusCode.INTERNAL_SERVER_ERROR,
+                { keyword: "INTERNAL_SERVER_ERROR", components: { error } }
             )
         }
     }
